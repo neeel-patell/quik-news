@@ -6,7 +6,7 @@
 
     $limit = $_POST['limit'];
 
-    $query = "SELECT `image`,category from images ORDER BY created_at DESC limit $limit,20";
+    $query = "SELECT id,`image`,category from images ORDER BY created_at DESC limit $limit,20";
     $result = $conn->query($query);
     while($row = $result->fetch_array()){
         if($row['category'] == 4){
@@ -15,7 +15,7 @@
         else{
             $blog = 0;
         }
-        array_push($data,array("images"=>$row['image'],"blog"=>$blog));
+        array_push($data,array("id"=>$row['id'],"images"=>$row['image'],"blog"=>$blog));
     }
 
     echo json_encode(array("data"=>$data));

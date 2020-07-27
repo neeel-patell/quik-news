@@ -12,7 +12,7 @@
             $id = $id->fetch_array();
             $image = $id['id'];
             $description = str_replace('"','\"',$_POST['description']);
-            $subject = $_POST['blog_subject'];
+            $subject = str_replace("'","\'",$_POST['blog_subject']);
             $conn->query("INSERT INTO blog(`subject`,`description`,image_id) VALUES('$subject',\"$description\",$image)");
         }
         header('location: dashboard.php?msg=Image link / Blog is inserted');

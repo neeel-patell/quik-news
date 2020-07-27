@@ -34,7 +34,7 @@
                 <div class="alert alert-primary h6 text-center"><?php echo $msg; ?></div>
             <?php } ?>
             
-            <div class="row p-5">                
+            <div class="row p-5">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="card border-success">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group pl-3 pr-3 mt-3" id="div_sub" style="display: none;">
                                 <label>Blog Subject : </label>
-                                <input type="text" name="blog_subject" id="blog_subject" class="form-control" placeholder="Enter Blog subject">
+                                <input type="text" name="blog_subject" id="blog_subject" maxlength="40" class="form-control" placeholder="Enter Blog subject">
                             </div>
                             <div class="form-group pl-3 pr-3 mt-3" id="div_des" style="display: none;">
                                 <label>Blog Description : </label>
@@ -72,6 +72,9 @@
                     </div>
                 </div>
                 <div class="col-md-4"></div>
+            </div>
+            <div class="container text-left">
+                <button class="form-control text-danger" onclick="location.href='view.php'">View Inserted Links</button>
             </div>
         </div>
         <footer class="jumbotron p-4 mb-0 bg-info" style="min-height: 10vh;">

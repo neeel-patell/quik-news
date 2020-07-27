@@ -61,7 +61,9 @@
                             </div>
                             <div class="form-group pl-3 pr-3 mt-3" id="div_des" style="display: none;">
                                 <label>Blog Description : </label>
-                                <textarea class="form-control" name="description" id="description" rows="10" placeholder="Enter Description"></textarea>
+                                <textarea class="form-control" rows="10" name="description" id="description">
+                                    &lt;p&gt;This is some sample content.&lt;/p&gt;
+                                </textarea>
                             </div>
                             <div class="container mt- pl-3 p-2 pr-3 mb-3">
                                 <button type="submit" class="form-control btn-success">Add Link / Blog</button>
@@ -76,6 +78,7 @@
             <h5 class="text-right">&copy; Lampros Tech</h5>
         </footer>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
         <script>
             function set_required(){
                 if(document.getElementById('category').value == 4){
@@ -91,6 +94,11 @@
                     document.getElementById('div_des').style.display = "none";
                 }
             }
+            ClassicEditor
+                .create( document.querySelector( '#description' ) )
+                .catch( error => {
+                    console.error( error );
+            });
         </script>
     </body>
 </html>

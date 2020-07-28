@@ -64,16 +64,17 @@
                     <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page+1); ?>&date=<?php echo $date; ?>'">Next > > ></button>
                 </div>
             </div>
-            
-            <?php if($msg !== ""){ ?>
-                <div class="alert alert-primary h6 text-center"><?php echo $msg; ?></div>
-            <?php } ?>
+
             
             <div class="container w-75 text-center mt-5">
-               
+                
+                <?php if($msg !== ""){ ?>
+                    <div class="alert alert-primary h6 text-center"><?php echo $msg; ?></div>
+                <?php } ?>
+
                <?php
                     while($row = $images->fetch_array()){
-                    $date = date('dS F Y - H:i A',strtotime($row['created_at']));
+                    $date1 = date('dS F Y - H:i A',strtotime($row['created_at']));
                     $category = $row['category'];
                 ?>
 
@@ -101,7 +102,7 @@
                         ?>
 
                     </h4>
-                    <h5 class="text-right mb-2"><?php echo $date; ?></h5>
+                    <h5 class="text-right mb-2"><?php echo $date1; ?></h5>
 
                     <?php if($category == 4){ ?>
                         <?php 
@@ -112,9 +113,18 @@
                     <?php } ?>
                     
                     <img src="<?php echo $row['image'] ?>" alt="Links Image" class="img-thumbnail">
+                    <button class="form-control btn-danger mt-3" onclick="if(confirm('Do you want to delete the link / blog?')){location.href='delete.php?id=<?php echo $row['id']; ?>&date=<?php echo $date; ?>&page=<?php echo $page; ?>';}">Delete Link / Blog</button>
                 </div>
                 <?php } ?>
 
+            </div>
+            <div class="clearfix text-center mt-5 mb-5">
+                <div class="float-left">
+                    <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page-1); ?>&date=<?php echo $date; ?>'">< < < Previous</button>
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page+1); ?>&date=<?php echo $date; ?>'">Next > > ></button>
+                </div>
             </div>
         </div>
         <footer class="jumbotron p-4 mb-0 bg-info" style="min-height: 10vh;">

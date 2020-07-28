@@ -10,8 +10,7 @@
     $query = "SELECT `image`,created_at from images WHERE category=$category ORDER BY created_at DESC limit $limit,20";
     $result = $conn->query($query);
     while($row = $result->fetch_array()){
-        $date = date('d/m/Y - H:i A',strtotime($row['created_at']));
-        array_push($data,array("images"=>$row['image'],"time"=>$date));
+        array_push($data,array("images"=>$row['image'],"time"=>$row['created_at']));
     }
 
     echo json_encode(array("data"=>$data));

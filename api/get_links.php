@@ -15,8 +15,7 @@
         else{
             $blog = 0;
         }
-        $date = date('d/m/Y - H:i A',strtotime($row['created_at']));
-        array_push($data,array("id"=>$row['id'],"images"=>$row['image'],"blog"=>$blog,"time"=>$date));
+        array_push($data,array("id"=>$row['id'],"images"=>$row['image'],"blog"=>$blog,"time"=>$row['created_at']));
     }
 
     echo json_encode(array("data"=>$data));

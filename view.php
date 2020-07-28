@@ -26,12 +26,16 @@
         $date  = $_GET['date'];
     }
     $limit = ($page-1) * 20;
+    // provide upper limit for specific page
+
     if($date != ""){
         $date = date("Y-m-d",strtotime($date));
         $images = $conn->query("SELECT id,image,created_at,category from images where created_at like '$date%' order by created_at desc limit $limit,20");
+        // setting date which has to be searched with specific limits using pagination
     }
     else{
         $images = $conn->query("SELECT id,image,created_at,category from images order by created_at desc limit $limit,20");
+        // setting only limits and generating the record
     }
 ?>
 <!DOCTYPE html>
@@ -74,7 +78,6 @@
 
                <?php
                     while($row = $images->fetch_array()){
-                    $date1 = date('dS F Y - H:i A',strtotime($row['created_at']));
                     $category = $row['category'];
                 ?>
 
@@ -99,17 +102,18 @@
                                     echo "Blog";
                                     break;
                             }
+                            // writing name of category in place of numeric identification we have
                         ?>
 
                     </h4>
-                    <h5 class="text-right mb-2"><?php echo $date1; ?></h5>
+                    <h5 class="text-right mb-2"><?php echo date('dS F Y - H:i A',strtotime($row['created_at'])); ?></h5>
 
-                    <?php if($category == 4){ ?>
-                        <?php 
+                    <?php
+                        if($category == 4){ // Fetching subject when link / post is of type blog
                             $blog = $conn->query("SELECT subject from blog where image_id=".$row['id']);
                             $blog = $blog->fetch_array();
-                        ?>
-                        <button class="btn btn-link p-0" onclick="location.href='read.php?details=<?php echo $row['id']; ?>';"><?php echo $blog['subject']; ?></button><br>
+                    ?>
+                    <button class="btn btn-link p-0" onclick="location.href='read.php?details=<?php echo $row['id']; ?>';"><?php echo $blog['subject']; ?></button><br>
                     <?php } ?>
                     
                     <img src="<?php echo $row['image'] ?>" alt="Links Image" class="img-thumbnail">
@@ -143,6 +147,7 @@
                 mm='0'+mm
             } 
             today = yyyy+'-'+mm+'-'+dd;
+            // setting max date as today's date for date picker
             document.getElementById("date_search").setAttribute("max", today);
             function send_view(){
                 var date = document.getElementById('date_search').value;

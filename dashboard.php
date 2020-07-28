@@ -59,6 +59,8 @@
                                 <label>Blog Subject : </label>
                                 <input type="text" name="blog_subject" id="blog_subject" maxlength="40" class="form-control" placeholder="Enter Blog subject">
                             </div>
+                            
+                            <!-- It'll be visible when type is blog -->
                             <div class="form-group pl-3 pr-3 mt-3" id="div_des" style="display: none;">
                                 <label>Blog Description : </label>
                                 <textarea class="form-control" rows="10" name="description" id="description">
@@ -102,6 +104,7 @@
                 .catch( error => {
                     console.error( error );
             });
+            // JQuery code to enable text editor in text-area
         </script>
     </body>
 </html>

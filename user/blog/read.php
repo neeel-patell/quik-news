@@ -2,19 +2,33 @@
     include_once '../../connection.php';
     $conn = getConn();
     $details = "";
+    // Declared variable to grab id
+
     if(!isset($_GET['details'])){
         header("Location: ../../this_site_certainly_does_not_exist");
+        // Redirecting to wrong call when its no details available
     }
     else{
         $details = str_replace("blog_"," ",$_GET['details']);
+        // removing blog_ from get varible and assigned to local variable
+
         $details[-1] = " ";
+        // Removing last alphabet from variable which will be random generated character
+        
         $details = trim($details);
+        // removing space from rest of value available in variable which will give me digits if variable is currectly formatted
+
         if(!is_numeric($details)){
             header("Location: ../../this_site_certainly_does_not_exist");
+            // Redirecting to wrong call when there is not only integer Id
         }
     }
     $blog = $conn->query("SELECT subject,description from blog where image_id=$details");
+    // Retrieving blog details from retrieved ID
+
     $image = $conn->query("SELECT image from images where id=$details");
+    // Getting Image link
+
     $image = $image->fetch_array();
     $blog = $blog->fetch_array();
 ?>
@@ -39,6 +53,7 @@
                     </div>
                     <?php
                         echo $blog['description'];
+                        // directly writing the description where it'll be html code
                     ?>
                 </div>
                 <div class="col-md-2"></div>

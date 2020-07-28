@@ -4,11 +4,13 @@
     $details = "";
     if(!isset($_GET['details'])){
         header("Location: ../../this_site_certainly_does_not_exist");
+        // Set to bad request when page is not called properly
     }
     else{
         $details = $_GET['details'];
     }
     $blog = $conn->query("SELECT subject,description from blog where image_id=$details");
+    // Getting blog and image link for specific image id
     $image = $conn->query("SELECT image from images where id=$details");
     $image = $image->fetch_array();
     $blog = $blog->fetch_array();

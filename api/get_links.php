@@ -7,8 +7,12 @@
     $limit = $_POST['limit'];
 
     $query = "SELECT id,`image`,category,created_at from images ORDER BY created_at DESC limit $limit,20";
+    // Generating 20 records by limit given from android device (Ex. 0,20 - which means leave first 0 or 20 records) 
+
     $result = $conn->query($query);
     while($row = $result->fetch_array()){
+        // Checking whether type of image is blog or not (1 = blog, 0 = other) 
+
         if($row['category'] == 4){
             $blog = 1;
         }

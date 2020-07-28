@@ -6,6 +6,8 @@
 
     $image = $_POST['image'];
     $result = $conn->query("SELECT subject from blog where image_id=$image");
+    // Getting Subject of blog to show under image in android
+
     $row = $result->fetch_array();
     array_push($data,array("subject"=>$row['subject']));
 

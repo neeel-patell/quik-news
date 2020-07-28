@@ -8,6 +8,8 @@
     $category = $_POST['category'];
 
     $query = "SELECT `image`,created_at from images WHERE category=$category ORDER BY created_at DESC limit $limit,20";
+    // Generating records which are of any type except blog
+
     $result = $conn->query($query);
     while($row = $result->fetch_array()){
         array_push($data,array("images"=>$row['image'],"time"=>$row['created_at']));

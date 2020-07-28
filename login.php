@@ -8,6 +8,6 @@
         header("location: dashboard.php");
     }
     else{
-        header("location: login.php");
+        header("location: index.php");
     }
 ?>

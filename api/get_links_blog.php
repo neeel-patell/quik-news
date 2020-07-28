@@ -12,7 +12,7 @@
         $query = "SELECT subject,description from blog where image_id=".$row['id'];
         $blog = $conn->query($query);
         $blog = $blog->fetch_array();
-        $date = date('dS F Y - H:i A',strtotime($row['created_at']));
+        $date = date('d/m/Y - H:i A',strtotime($row['created_at']));
         array_push($data,array("id"=>$row['id'],"images"=>$row['image'],"subject"=>$blog['subject'],"description"=>$blog['description'],"time"=>$date));
     }
 

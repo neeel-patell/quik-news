@@ -4,7 +4,12 @@
 
     $image = $_POST['image_link'];
     $category = $_POST['category'];
-    $query = "INSERT INTO images(`image`,category) VALUES(\"$image\",$category)";
+
+    // Getting current date and time for server
+    $date = new DateTime("now", new DateTimeZone('Asia/Kolkata'));
+    $now = $date->format('Y-m-d H:i:s');
+    
+    $query = "INSERT INTO images(`image`,category,created_at,updated_at) VALUES(\"$image\",$category,'$now','$now')";
     // Adding image with specific category
 
     if($conn->query($query) == true){
@@ -18,7 +23,7 @@
             $subject = str_replace("'","\'",$_POST['blog_subject']);
             // Replacing characters for easy insert in database
             
-            $conn->query("INSERT INTO blog(`subject`,`description`,image_id) VALUES('$subject',\"$description\",$image)");
+            $conn->query("INSERT INTO blog(`subject`,`description`,image_id,created_at,updated_at) VALUES('$subject',\"$description\",$image,'$now','$now')");
         }
         header('location: dashboard.php?msg=Image link / Blog is inserted');
     }

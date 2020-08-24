@@ -1,5 +1,6 @@
 <?php
-    include 'connection.php';
+    include_once 'connection.php';
+    include_once 'notification_function.php';
     $conn = getConn();
 
     $image = $_POST['image_link'];
@@ -12,7 +13,30 @@
     $query = "INSERT INTO images(`image`,category,created_at,updated_at) VALUES(\"$image\",$category,'$now','$now')";
     // Adding image with specific category
 
+    switch($category){
+        case 0:
+            $title = "Business";
+            break;
+        case 1:
+            $title = "Defense";
+            break;
+        case 2:
+            $title = "Prime";
+            break;
+        case 3:
+            $title = "Lists";
+            break;
+        case 4:
+            $title = "Blog";
+            break;
+        case 5:
+            $title = "India";
+            break;
+    }
     if($conn->query($query) == true){
+        if(isset($_POST['notify'])){
+            send_notification($title);
+        }
         if($category == 4){ // Checking whether image is a type of blog or not
             $id = $conn->query("SELECT id from images where `image`=\"$image\" AND category=$category");
             // Retrieving ID of latest image inserted with link and category as blog

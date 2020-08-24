@@ -68,7 +68,13 @@
                                     &lt;p&gt;This is some sample content.&lt;/p&gt;
                                 </textarea>
                             </div>
-                            <div class="container mt- pl-3 p-2 pr-3 mb-3">
+                            <div class="form-group pl-3 pr-3 mt-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="notify" id="user_chk">
+                                    <label class="form-check-label" for="user_chk">Notify User for post</label>
+                                </div>
+                            </div>
+                            <div class="container mt-3 pl-3 p-2 pr-3 mb-3">
                                 <button type="submit" class="form-control btn-success">Add Link / Blog</button>
                             </div>
                         </form>

@@ -30,13 +30,16 @@
 
     if($date != ""){
         $date = date("Y-m-d",strtotime($date));
-        $images = $conn->query("SELECT id,image,created_at,category from images where created_at like '$date%' order by created_at desc limit $limit,20");
+        $query = "SELECT id,image,created_at,category from images where created_at like '$date%' order by created_at desc";
         // setting date which has to be searched with specific limits using pagination
     }
     else{
-        $images = $conn->query("SELECT id,image,created_at,category from images order by created_at desc limit $limit,20");
+        $query = "SELECT id,image,created_at,category from images order by created_at desc";
         // setting only limits and generating the record
     }
+    $images = $conn->query($query);
+    $totalPages = ceil(mysqli_num_rows($images)/20);
+    $images = $conn->query($query." limit $limit,20");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,12 +63,20 @@
             <div class="container text-right mt-5">
                 <input type="date" class="form-control" id="date_search" <?php if($date != ""){ ?> value="<?php echo date("Y-m-d", strtotime($date)); ?>" <?php } ?> onchange="send_view()">
             </div>
-            <div class="clearfix text-center mt-5">
+            <div class="clearfix mt-5 mb-5">
                 <div class="float-left">
+                    
+                    <?php if($page > 1){ ?>
                     <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page-1); ?>&date=<?php echo $date; ?>'">< < < Previous</button>
+                    <?php } ?>
+
                 </div>
                 <div class="float-right">
+
+                    <?php if($page < $totalPages){ ?>
                     <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page+1); ?>&date=<?php echo $date; ?>'">Next > > ></button>
+                    <?php } ?>
+
                 </div>
             </div>
 
@@ -101,6 +112,9 @@
                                 case 4:
                                     echo "Blog";
                                     break;
+                                case 5:
+                                    echo "India";
+                                    break;
                             }
                             // writing name of category in place of numeric identification we have
                         ?>
@@ -122,12 +136,20 @@
                 <?php } ?>
 
             </div>
-            <div class="clearfix text-center mt-5 mb-5">
+            <div class="clearfix mt-5 mb-5">
                 <div class="float-left">
+                    
+                    <?php if($page > 1){ ?>
                     <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page-1); ?>&date=<?php echo $date; ?>'">< < < Previous</button>
+                    <?php } ?>
+
                 </div>
                 <div class="float-right">
+
+                    <?php if($page < $totalPages){ ?>
                     <button class="btn btn-danger" onclick="location.href='view.php?page=<?php echo ($page+1); ?>&date=<?php echo $date; ?>'">Next > > ></button>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>

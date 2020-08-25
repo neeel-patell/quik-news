@@ -13,6 +13,7 @@
     $query = "INSERT INTO images(`image`,category,created_at,updated_at) VALUES(\"$image\",$category,'$now','$now')";
     // Adding image with specific category
 
+    // Finding Category to sent as category for notification
     switch($category){
         case 0:
             $title = "Business";
@@ -34,8 +35,10 @@
             break;
     }
     if($conn->query($query) == true){
+        $msg = "";
+        // If notify checkbox is checked then calling function for send notifications
         if(isset($_POST['notify'])){
-            send_notification($title);
+            $msg = send_notification($title);
         }
         if($category == 4){ // Checking whether image is a type of blog or not
             $id = $conn->query("SELECT id from images where `image`=\"$image\" AND category=$category");
@@ -49,7 +52,7 @@
             
             $conn->query("INSERT INTO blog(`subject`,`description`,image_id,created_at,updated_at) VALUES('$subject',\"$description\",$image,'$now','$now')");
         }
-        header('location: dashboard.php?msg=Image link / Blog is inserted');
+        header('location: dashboard.php?msg=Image link / Blog is inserted '.$msg);
     }
     else{
         header('location: dashboard.php?msg=Image link / Blog is not inserted');

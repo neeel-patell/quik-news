@@ -1,6 +1,6 @@
 <?php
     require_once 'connection.php';
-    function send_notification($title){
+    function send_notification($title,$message){
         $conn = getConn();
         $tokens = array();
 
@@ -10,12 +10,13 @@
             array_push($tokens,$row['token']);
         }
 
-        // Simple message that shows that post has uploaded
-        $message = array("body" =>"New Post is just Uploaded in $title category" , "title"=>$title);
+        // Simple notification that shows that post has uploaded
+        $message = array("body" =>$message , "title"=>$title);
         $url = 'https://fcm.googleapis.com/fcm/send';
         $fields = array(
             'registration_ids' => $tokens,
-            'notification' => $message
+            'notification' => $message,
+            'data' => $message
             );
 
         $headers = array(
@@ -23,21 +24,21 @@
             'Content-Type: application/json'
             );
 
-    $ch = curl_init();
+        $ch = curl_init();
 
-    // setting http headers and variables to pass to send notification
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-    $result = curl_exec($ch);           
-    if ($result === FALSE) {
-        return "Notifications not sent";
-    }
-    curl_close($ch);
-    return "Notifications Sent";
+        // setting http headers and variables to pass to send notification
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);  
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        $result = curl_exec($ch);           
+        if ($result === FALSE) {
+            return "Notifications not sent";
+        }
+        curl_close($ch);
+        return "Notifications Sent";
     }
 ?>

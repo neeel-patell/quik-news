@@ -38,7 +38,7 @@
         $msg = "";
         // If notify checkbox is checked then calling function for send notifications
         if(isset($_POST['notify'])){
-            $msg = send_notification($title);
+            $msg = send_notification($title,"New Post is just Uploaded in $title category");
         }
         if($category == 4){ // Checking whether image is a type of blog or not
             $id = $conn->query("SELECT id from images where `image`=\"$image\" AND category=$category");

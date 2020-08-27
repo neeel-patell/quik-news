@@ -34,6 +34,9 @@
                 <div class="alert alert-primary h6 text-center"><?php echo $msg; ?></div>
             <?php } ?>
             
+            <div class="container mt-5">
+                <button class="btn btn-danger" onclick="location.href='dashboard.php';">< Add Link</button>
+            </div>
             <div class="row p-5 m-0">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">

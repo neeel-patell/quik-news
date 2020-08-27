@@ -34,6 +34,9 @@
                 <div class="alert alert-primary h6 text-center"><?php echo $msg; ?></div>
             <?php } ?>
             
+            <div class="container text-right mt-5">
+                <button class="btn btn-danger" onclick="location.href='send_message.php';">Send Custom Notification ></button>
+            </div>
             <div class="row p-5">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">

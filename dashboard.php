@@ -59,24 +59,38 @@
                                 <label>Image Link : </label>
                                 <input type="url" name="image_link" class="form-control" placeholder="Enter / Paste Image Link" required>
                             </div>
+
+                            <!-- It'll be visible when type is blog -->
                             <div class="form-group pl-3 pr-3 mt-3" id="div_sub" style="display: none;">
                                 <label>Blog Subject : </label>
                                 <input type="text" name="blog_subject" id="blog_subject" maxlength="40" class="form-control" placeholder="Enter Blog subject">
                             </div>
-                            
-                            <!-- It'll be visible when type is blog -->
                             <div class="form-group pl-3 pr-3 mt-3" id="div_des" style="display: none;">
                                 <label>Blog Description : </label>
                                 <textarea class="form-control" rows="10" name="description" id="description">
                                     &lt;p&gt;This is some sample content.&lt;/p&gt;
                                 </textarea>
                             </div>
+                            <!-- Blog Section ends here -->
+                            
                             <div class="form-group pl-3 pr-3 mt-3">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="notify" id="user_chk">
-                                    <label class="form-check-label" for="user_chk">Notify User for post</label>
+                                    <input type="checkbox" class="form-check-input" name="notify" id="not_chk" onclick="set_notification_elements()">
+                                    <label class="form-check-label" for="not_chk">Notify User for post</label>
                                 </div>
                             </div>
+                            
+                            <!-- Notification Section which will visible on notify checkbox checked = true -->
+                            <div class="form-group pl-3 pr-3 mt-3" id="div_not_title" style="display: none;">
+                                <label>Notification Title : </label>
+                                <input type="text" name="title" id="not_title" maxlength="30" class="form-control" placeholder="Enter Notification Title">
+                            </div>
+                            <div class="form-group pl-3 pr-3 mt-3" id="div_not_body" style="display: none;">
+                                <label>Notification Body : </label>
+                                <textarea class="form-control" placeholder="Enter Notification body" name="body" id="not_body" rows="3" style="resize: none;" maxlength="30"></textarea>
+                            </div>
+                            <!-- Notification section ends here -->
+
                             <div class="container mt-3 pl-3 p-2 pr-3 mb-3">
                                 <button type="submit" class="form-control btn-success">Add Link / Blog</button>
                             </div>
@@ -107,6 +121,20 @@
                     document.getElementById('description').removeAttribute("required");
                     document.getElementById('div_sub').style.display = "none";
                     document.getElementById('div_des').style.display = "none";
+                }
+            }
+            function set_notification_elements(){
+                if(document.getElementById('not_chk').checked === true){
+                    document.getElementById('not_title').setAttribute("required","");
+                    document.getElementById('not_body').setAttribute("required","");
+                    document.getElementById('div_not_title').style.display = "block";
+                    document.getElementById('div_not_body').style.display = "block";
+                }
+                else{
+                    document.getElementById('not_title').removeAttribute("required");
+                    document.getElementById('not_body').removeAttribute("required");
+                    document.getElementById('div_not_title').style.display = "none";
+                    document.getElementById('div_not_body').style.display = "none";
                 }
             }
             ClassicEditor

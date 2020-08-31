@@ -12,33 +12,13 @@
     
     $query = "INSERT INTO images(`image`,category,created_at,updated_at) VALUES(\"$image\",$category,'$now','$now')";
     // Adding image with specific category
-
-    // Finding Category to sent as category for notification
-    switch($category){
-        case 0:
-            $title = "Business";
-            break;
-        case 1:
-            $title = "Defense";
-            break;
-        case 2:
-            $title = "Prime";
-            break;
-        case 3:
-            $title = "Lists";
-            break;
-        case 4:
-            $title = "Blog";
-            break;
-        case 5:
-            $title = "India";
-            break;
-    }
     if($conn->query($query) == true){
         $msg = "";
-        // If notify checkbox is checked then calling function for send notifications
+        // If notify checkbox is checked then calling function for send notifications and insert in to database
         if(isset($_POST['notify'])){
-            $msg = send_notification($title,"New Post is just Uploaded in $title category");
+            $title = $_POST['title'];
+            $body = $_POST['body'];
+            $msg = send_notification($title,$body);
         }
         if($category == 4){ // Checking whether image is a type of blog or not
             $id = $conn->query("SELECT id from images where `image`=\"$image\" AND category=$category");

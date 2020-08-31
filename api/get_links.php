@@ -7,7 +7,7 @@
     $limit = $_POST['limit'];
 
     $query = "SELECT id,`image`,category,created_at from images ORDER BY created_at DESC limit $limit,20";
-    // Generating 20 records by limit given from android device (Ex. 0,20 - which means leave first 0 or 20 records) 
+    // Generating 20 records by limit given from android device (Ex. 0,20 - which means leave first 0 or 20 records; 20,20 leave first 20 records start with 21 till next 20 which means 21 - 40 records)
 
     $result = $conn->query($query);
     while($row = $result->fetch_array()){

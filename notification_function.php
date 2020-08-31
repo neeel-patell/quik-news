@@ -14,7 +14,7 @@
             array_push($tokens,$row['token']);
         }
 
-        $query = "INSERT INTO notifications(title,body) VALUES('$title','$message')"; // query to insert notification to table to retrieve in android devices
+        $query = "INSERT INTO notifications(title,body,created_at) VALUES('$title','$message','$now')"; // query to insert notification to table to retrieve in android devices
         if($conn->query($query)){
             // notification as per message and title defined on function call
             $message = array("body" =>$message , "title"=>$title);

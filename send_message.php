@@ -45,11 +45,11 @@
                         <form action="send_message_to_android.php" method="post">
                             <div class="form-group pl-3 pr-3 mt-3">
                                 <label>Title : </label>
-                                <input type="text" name="title" class="form-control" placeholder="Enter title of Message" required>
+                                <input type="text" name="title" maxlength="30" class="form-control" placeholder="Enter title of Message" required>
                             </div>
                             <div class="form-group pl-3 pr-3 mt-3">
                                 <label>Message : </label>
-                                <input type="text" name="message" class="form-control" placeholder="Enter content of Message" required>
+                                <input type="text" name="message" maxlength="100" class="form-control" placeholder="Enter content of Message" required>
                             </div>
                             <div class="row m-0 mt-3 mb-3">
                                 <div class="col-md-3"></div>

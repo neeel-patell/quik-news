@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group pl-3 pr-3 mt-3" id="div_not_body" style="display: none;">
                                 <label>Notification Body : </label>
-                                <textarea class="form-control" placeholder="Enter Notification body" name="body" id="not_body" rows="3" style="resize: none;" maxlength="30"></textarea>
+                                <textarea class="form-control" placeholder="Enter Notification body" name="body" id="not_body" rows="3" style="resize: none;" maxlength="100"></textarea>
                             </div>
                             <!-- Notification section ends here -->
 

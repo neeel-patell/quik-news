@@ -21,7 +21,6 @@
             $url = 'https://fcm.googleapis.com/fcm/send';
             $fields = array(
                 'registration_ids' => $tokens,
-                'notification' => $message,
                 'data' => $message
                 );
 

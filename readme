@@ -1,0 +1,19 @@
+Database : myquikne_quiknews
+User : myquikne_quiknews
+Password : !cq)LBU~Z[4HDjjf
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+Login in Web : admin@lampros.ml
+Password : 3nE=f:QGLLu7
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+For blogs you need to uncomment many lines in files
+- in add_links.php [25 to 36]
+- in view.php [100 to 102, 131 to 136]
+- in dashboard.php [50, 66 to 76, 116 to 130]

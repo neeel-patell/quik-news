@@ -20,18 +20,20 @@
             $body = $_POST['body'];
             $msg = send_notification($title,$body);
         }
-        if($category == 4){ // Checking whether image is a type of blog or not
-            $id = $conn->query("SELECT id from images where `image`=\"$image\" AND category=$category");
-            // Retrieving ID of latest image inserted with link and category as blog
 
-            $id = $id->fetch_array();
-            $image = $id['id'];
-            $description = str_replace('"','\"',$_POST['description']);
-            $subject = str_replace("'","\'",$_POST['blog_subject']);
-            // Replacing characters for easy insert in database
+        // Enable below lines when you want to insert blogs from the quiknews web
+        // if($category == 0){ // Checking whether image is a type of blog or not
+        //     $id = $conn->query("SELECT id from images where `image`=\"$image\" AND category=$category");
+        //     // Retrieving ID of latest image inserted with link and category as blog
+
+        //     $id = $id->fetch_array();
+        //     $image = $id['id'];
+        //     $description = str_replace('"','\"',$_POST['description']);
+        //     $subject = str_replace("'","\'",$_POST['blog_subject']);
+        //     // Replacing characters for easy insert in database
             
-            $conn->query("INSERT INTO blog(`subject`,`description`,image_id,created_at,updated_at) VALUES('$subject',\"$description\",$image,'$now','$now')");
-        }
+        //     $conn->query("INSERT INTO blog(`subject`,`description`,image_id,created_at,updated_at) VALUES('$subject',\"$description\",$image,'$now','$now')");
+        // }
         header('location: dashboard.php?msg=Image link / Blog is inserted '.$msg);
     }
     else{

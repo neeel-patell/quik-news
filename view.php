@@ -97,23 +97,26 @@
                         
                         <?php
                             switch($category){
-                                case 0:
-                                    echo "Business";
-                                    break;
+                                // case 0:
+                                //     echo "Blog";
+                                //     break;
                                 case 1:
-                                    echo "Defense";
+                                    echo "Home";
                                     break;
                                 case 2:
-                                    echo "Prime";
+                                    echo "Stocks";
                                     break;
                                 case 3:
-                                    echo "Lists";
+                                    echo "Mutual Funds";
                                     break;
                                 case 4:
-                                    echo "Blog";
+                                    echo "IPOs";
                                     break;
                                 case 5:
-                                    echo "India";
+                                    echo "Economy";
+                                    break;
+                                case 6:
+                                    echo "Others";
                                     break;
                             }
                             // writing name of category in place of numeric identification we have
@@ -122,13 +125,15 @@
                     </h4>
                     <h5 class="text-right mb-2"><?php echo date('dS F Y - H:i A',strtotime($row['created_at'])); ?></h5>
 
+
+                    <!-- Uncomment all the lines below for blogs -->
                     <?php
-                        if($category == 4){ // Fetching subject when link / post is of type blog
-                            $blog = $conn->query("SELECT subject from blog where image_id=".$row['id']);
-                            $blog = $blog->fetch_array();
+                        // if($category == 0){ // Fetching subject when link / post is of type blog
+                        //     $blog = $conn->query("SELECT subject from blog where image_id=".$row['id']);
+                        //     $blog = $blog->fetch_array();
                     ?>
-                    <button class="btn btn-link p-0" onclick="location.href='read.php?details=<?php echo $row['id']; ?>';"><?php echo $blog['subject']; ?></button><br>
-                    <?php } ?>
+                    <!-- <button class="btn btn-link p-0" onclick="location.href='read.php?details=<?php echo $row['id']; ?>';"><?php echo $blog['subject']; ?></button><br> -->
+                    <?php //} ?>
                     
                     <img src="<?php echo $row['image'] ?>" alt="Links Image" class="img-thumbnail">
                     <button class="form-control btn-danger mt-3" onclick="if(confirm('Do you want to delete the link / blog?')){location.href='delete.php?id=<?php echo $row['id']; ?>&date=<?php echo $date; ?>&page=<?php echo $page; ?>';}">Delete Link / Blog</button>

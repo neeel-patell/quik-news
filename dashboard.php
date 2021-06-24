@@ -47,12 +47,14 @@
                                 <label>Category : </label>
                                 <select name="category" class="form-control" id="category" autofocus required onchange="set_required()">
                                     <option value=""> - - - Select Category - - - </option>
-                                    <option value="0">Business</option>
-                                    <option value="1">Defense</option>
-                                    <option value="2">Prime</option>
-                                    <option value="3">Lists</option>
-                                    <option value="4">Blog</option>
-                                    <option value="5">India</option>
+                                    <!-- <option value="0">Blog</option> -->
+                                    <option value="1">Home</option>
+                                    <option value="2">Stocks</option>
+                                    <option value="3">Mutual Funds</option>
+                                    <option value="4">IPOs</option>
+                                    <option value="5">Economy</option>
+                                    <option value="6">Others</option>
+
                                 </select>
                             </div>
                             <div class="form-group pl-3 pr-3 mt-3">
@@ -60,8 +62,9 @@
                                 <input type="url" name="image_link" class="form-control" placeholder="Enter / Paste Image Link" required>
                             </div>
 
+                            <!-- Uncomment these lines for blogs -->
                             <!-- It'll be visible when type is blog -->
-                            <div class="form-group pl-3 pr-3 mt-3" id="div_sub" style="display: none;">
+                            <!-- <div class="form-group pl-3 pr-3 mt-3" id="div_sub" style="display: none;">
                                 <label>Blog Subject : </label>
                                 <input type="text" name="blog_subject" id="blog_subject" maxlength="40" class="form-control" placeholder="Enter Blog subject">
                             </div>
@@ -70,7 +73,7 @@
                                 <textarea class="form-control" rows="10" name="description" id="description">
                                     &lt;p&gt;This is some sample content.&lt;/p&gt;
                                 </textarea>
-                            </div>
+                            </div> -->
                             <!-- Blog Section ends here -->
                             
                             <div class="form-group pl-3 pr-3 mt-3">
@@ -109,20 +112,22 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
         <script>
-            function set_required(){
-                if(document.getElementById('category').value == 4){
-                    document.getElementById('blog_subject').setAttribute("required","");
-                    document.getElementById('description').setAttribute("required","");
-                    document.getElementById('div_sub').style.display = "block";
-                    document.getElementById('div_des').style.display = "block";
-                }
-                else{
-                    document.getElementById('blog_subject').removeAttribute("required");
-                    document.getElementById('description').removeAttribute("required");
-                    document.getElementById('div_sub').style.display = "none";
-                    document.getElementById('div_des').style.display = "none";
-                }
-            }
+
+            // Unable Javascript function code for blogs while it sets some rules in html
+            // function set_required(){
+            //     if(document.getElementById('category').value == 0){
+            //         document.getElementById('blog_subject').setAttribute("required","");
+            //         document.getElementById('description').setAttribute("required","");
+            //         document.getElementById('div_sub').style.display = "block";
+            //         document.getElementById('div_des').style.display = "block";
+            //     }
+            //     else{
+            //         document.getElementById('blog_subject').removeAttribute("required");
+            //         document.getElementById('description').removeAttribute("required");
+            //         document.getElementById('div_sub').style.display = "none";
+            //         document.getElementById('div_des').style.display = "none";
+            //     }
+            // }
             function set_notification_elements(){
                 if(document.getElementById('not_chk').checked === true){
                     document.getElementById('not_title').setAttribute("required","");

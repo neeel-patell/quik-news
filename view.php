@@ -110,7 +110,7 @@
                                     echo "IPOs";
                                     break;
                                 case 4:
-                                    echo "Economy";
+                                    echo "Prime";
                                     break;
                                 case 5:
                                     echo "Others";

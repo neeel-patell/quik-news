@@ -52,7 +52,7 @@
                                     <option value="1">Stocks</option>
                                     <option value="2">Mutual Funds</option>
                                     <option value="3">IPOs</option>
-                                    <option value="4">Economy</option>
+                                    <option value="4">Prime</option>
                                     <option value="5">Others</option>
 
                                 </select>

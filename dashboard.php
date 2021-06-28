@@ -48,12 +48,12 @@
                                 <select name="category" class="form-control" id="category" autofocus required onchange="set_required()">
                                     <option value=""> - - - Select Category - - - </option>
                                     <!-- <option value="0">Blog</option> -->
-                                    <option value="1">Home</option>
-                                    <option value="2">Stocks</option>
-                                    <option value="3">Mutual Funds</option>
-                                    <option value="4">IPOs</option>
-                                    <option value="5">Economy</option>
-                                    <option value="6">Others</option>
+                                    <!-- <option value="1">Home</option> -->
+                                    <option value="1">Stocks</option>
+                                    <option value="2">Mutual Funds</option>
+                                    <option value="3">IPOs</option>
+                                    <option value="4">Economy</option>
+                                    <option value="5">Others</option>
 
                                 </select>
                             </div>

@@ -101,21 +101,18 @@
                                 //     echo "Blog";
                                 //     break;
                                 case 1:
-                                    echo "Home";
-                                    break;
-                                case 2:
                                     echo "Stocks";
                                     break;
-                                case 3:
+                                case 2:
                                     echo "Mutual Funds";
                                     break;
-                                case 4:
+                                case 3:
                                     echo "IPOs";
                                     break;
-                                case 5:
+                                case 4:
                                     echo "Economy";
                                     break;
-                                case 6:
+                                case 5:
                                     echo "Others";
                                     break;
                             }

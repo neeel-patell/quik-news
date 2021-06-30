@@ -48,7 +48,6 @@
                                 <select name="category" class="form-control" id="category" autofocus required onchange="set_required()">
                                     <option value=""> - - - Select Category - - - </option>
                                     <!-- <option value="0">Blog</option> -->
-                                    <!-- <option value="1">Home</option> -->
                                     <option value="1">Stocks</option>
                                     <option value="2">Mutual Funds</option>
                                     <option value="3">IPOs</option>
